@@ -1,7 +1,12 @@
 git@github.com:kelloggm/icalavailable.git 3c961864c7ec9a0632b5c51fb9f4cde0e8e23ccf
 git@github.com:dd482IT/require-javadoc.git 55d9b070a09ff3e71b78db5191d2a0aae1c3c373
-git@github.com:mernst/Araknemu fcb004e5e5744c8ffa9bba69254d2897188bb5dc
-git@github.com:mernst/Nameless-Plugin.git 0332857ce17078fa790aaedfaaa56f3a89dd1ee7
-git@github.com:Nargeshdb/zookeeper.git ba3341644913eee6e043b0e212e315529c6f6a4a
 git@github.com:dd482IT/RxNorm-explorer-wpi.git b6e36d6c4888ac74b6507157fd07d10d5881e0b0
 git@github.com:dd482IT/reflection-util-wpi.git 53aec91c373f8320c648a17cd3efdc7616010cbd
+https://github.com/dd482IT/randoop-wpi.git b4f334ea757c19cc1ed5ce36d34ac63d6cbffea8
+https://github.com/dd482IT/table-wrapper-csv-impl-wpi.git 6ca9bd45de507ef68933f24dddf9a198fca502bf
+https://github.com/dd482IT/table-wrapper-api-WPI.git babe103b77e54f9c857f5c2720328bd5337d206b
+https://github.com/dd482IT/cache2k-wpi.git 0eaa156bdecd617b2aa4c745d0f8844a32609697
+https://github.com/dd482IT/multi-version-control-wpi 1be36ad613edceac0bc8f9c782126b01e4edc0cf
+https://github.com/dd482IT/lookup-wpi d7cc20245e2d9326e11608bdbd8bb6203bc9dde6
+https://github.com/dd482IT/dmn-check-wpi.git b71aca1eb20f5ad16e745f4f54fa9a5012d2f067
+https://github.com/dd482IT/Nameless-Java-API-WPI.git ef6a2adc4fdd6c56152de2000a187c21cbd1e51a
