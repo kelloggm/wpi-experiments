@@ -1,0 +1,235 @@
+package org.cache2k;
+
+/*-
+ * #%L
+ * cache2k API
+ * %%
+ * Copyright (C) 2000 - 2022 headissue GmbH, Munich
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ */
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentMap;
+import java.util.function.Function;
+import org.cache2k.processor.EntryMutator;
+import org.cache2k.processor.EntryProcessingResult;
+import org.cache2k.processor.EntryProcessor;
+
+/**
+ * Base class for implementations of the cache interface. By default, every method throws {@link
+ * UnsupportedOperationException}.
+ *
+ * @author Jens Wilke
+ */
+@org.checkerframework.framework.qual.AnnotatedFor(
+    "org.checkerframework.checker.nullness.KeyForSubchecker")
+public class AbstractCache<K, V> implements Cache<K, V> {
+
+  @org.checkerframework.dataflow.qual.Pure
+  public String getName(AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V get(AbstractCache<K, V> this, K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public CacheEntry<K, V> getEntry(AbstractCache<K, V> this, K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V peek(AbstractCache<K, V> this, K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public CacheEntry<K, V> peekEntry(AbstractCache<K, V> this, K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean containsKey(AbstractCache<K, V> this, K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void put(AbstractCache<K, V> this, K key, V value) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V computeIfAbsent(
+      AbstractCache<K, V> this, K key, Function<? super K, ? extends V> function) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean putIfAbsent(AbstractCache<K, V> this, K key, V value) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V peekAndReplace(AbstractCache<K, V> this, K key, V value) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean replace(AbstractCache<K, V> this, K key, V value) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean replaceIfEquals(AbstractCache<K, V> this, K key, V oldValue, V newValue) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V peekAndRemove(AbstractCache<K, V> this, K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean containsAndRemove(AbstractCache<K, V> this, K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void remove(AbstractCache<K, V> this, K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean removeIfEquals(AbstractCache<K, V> this, K key, V expectedValue) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void removeAll(AbstractCache<K, V> this, Iterable<? extends K> keys) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V peekAndPut(AbstractCache<K, V> this, K key, V value) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void expireAt(AbstractCache<K, V> this, K key, long time) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public CompletableFuture<Void> loadAll(AbstractCache<K, V> this, Iterable<? extends K> keys) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public CompletableFuture<Void> reloadAll(AbstractCache<K, V> this, Iterable<? extends K> keys) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public <R> R invoke(AbstractCache<K, V> this, K key, EntryProcessor<K, V, R> processor) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public <R> Map<K, EntryProcessingResult<R>> invokeAll(
+      AbstractCache<K, V> this,
+      Iterable<? extends K> keys,
+      EntryProcessor<K, V, R> entryProcessor) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void mutate(AbstractCache<K, V> this, K key, EntryMutator<K, V> mutator) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void mutateAll(
+      AbstractCache<K, V> this, Iterable<? extends K> keys, EntryMutator<K, V> mutator) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public Map<K, V> getAll(AbstractCache<K, V> this, Iterable<? extends K> keys) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public Map<K, V> peekAll(AbstractCache<K, V> this, Iterable<? extends K> keys) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void putAll(AbstractCache<K, V> this, Map<? extends K, ? extends V> valueMap) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public Set<K> keys(AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public Set<CacheEntry<K, V>> entries(AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void removeAll(AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void clear(AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void close(AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public CacheManager getCacheManager(AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean isClosed(AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public ConcurrentMap<K, V> asMap(AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public <X> X requestInterface(AbstractCache<K, V> this, Class<X> type) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public String toString(AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+}

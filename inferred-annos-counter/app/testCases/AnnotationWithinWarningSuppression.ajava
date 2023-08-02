@@ -1,0 +1,9 @@
+import java.lang.SuppressWarnings;
+import org.checkerframework.checker.nullness.qual.NonNull;
+
+public class AnnotationWithinWarningSuppression {
+	public static void main() {
+		int x;
+	}
+}
+

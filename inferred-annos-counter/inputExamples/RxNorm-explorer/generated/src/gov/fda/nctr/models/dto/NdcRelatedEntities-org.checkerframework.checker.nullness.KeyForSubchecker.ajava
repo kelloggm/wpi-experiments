@@ -1,0 +1,35 @@
+package gov.fda.nctr.models.dto;
+
+import java.util.List;
+import gov.fda.nctr.models.dto.drugrelents.Sbd;
+import gov.fda.nctr.models.dto.drugrelents.Scd;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.KeyForSubchecker")
+public class NdcRelatedEntities {
+
+    private String ndc;
+
+    private List<Scd> scds;
+
+    private List<Sbd> sbds;
+
+    // for Jackson serialization
+    @org.checkerframework.dataflow.qual.SideEffectFree
+    private NdcRelatedEntities() {
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  String getNdc() {
+        return ndc;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  List<Scd> getScds() {
+        return scds;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  List<Sbd> getSbds() {
+        return sbds;
+    }
+}

@@ -1,0 +1,87 @@
+package gov.fda.nctr.data_access;
+
+import java.sql.*;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.SqlParameterValue;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import gov.fda.nctr.util.Nullables;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.KeyForSubchecker")
+public final class JdbcUtils {
+
+    public static <T>  SqlParameterValue optionalSqlParamVal(JDBCType jdbcType, T val) {
+        return new SqlParameterValue(jdbcType.getVendorTypeNumber(), val);
+    }
+
+    public static <T>  RowMapper<T> jsonObjectRowMapper( Class<T> targetClass,  ObjectMapper jsonObjectMapper) {
+        return (resultSet, i) -> {
+            try {
+                String json = Nullables.requireNonNull(resultSet.getString(1));
+                return jsonObjectMapper.readValue(json, targetClass);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        };
+    }
+
+    public static class Params extends MapSqlParameterSource {
+
+        public static  Params params( Object ... nameValuePairs) {
+            if (nameValuePairs.length % 2 != 0)
+                throw new IllegalArgumentException("Even number of arguments expected for parameter names and values.");
+            Params params = new Params();
+            final int numPairs = nameValuePairs.length / 2;
+            for (int pairIx = 0; pairIx < numPairs; ++pairIx) {
+                Object paramName = nameValuePairs[2 * pairIx];
+                if (!(paramName instanceof String))
+                    throw new IllegalArgumentException("Expected string parameter name for pair " + (pairIx + 1) + ".");
+                params.addValue((String) paramName, nameValuePairs[2 * pairIx + 1]);
+            }
+            return params;
+        }
+    }
+
+    public static   long updateReturningGeneratedKey(JdbcTemplate jdbcTemplate, PreparedStatementCreator psc) {
+        final KeyHolder holder = new GeneratedKeyHolder();
+        int updCount = jdbcTemplate.update(psc, holder);
+        if (updCount == 0)
+            throw new RuntimeException("Update affected 0 records, expected 1.");
+        return getGeneratedKey(holder);
+    }
+
+    public static   long getGeneratedKey( KeyHolder holder) {
+        Number key = holder.getKey();
+        if (key == null)
+            throw new RuntimeException("Could not extract generated key.");
+        else
+            return key.longValue();
+    }
+
+    public static void setNullableParam(PreparedStatement ps, int paramNum, String val) throws SQLException {
+        if (val != null)
+            ps.setString(paramNum, val);
+        else
+            ps.setNull(paramNum, Types.VARCHAR);
+    }
+
+    public static void setNullableParam(PreparedStatement ps, int paramNum, Long val) throws SQLException {
+        if (val != null)
+            ps.setLong(paramNum, val);
+        else
+            ps.setNull(paramNum, Types.BIGINT);
+    }
+
+    public static  Timestamp now() {
+        return new Timestamp(System.currentTimeMillis());
+    }
+
+    @org.checkerframework.dataflow.qual.SideEffectFree
+    private JdbcUtils() {
+    }
+}

@@ -1,0 +1,78 @@
+package gov.fda.nctr.util;
+
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.KeyForSubchecker")
+public final class Nullables {
+
+    public static <T, U> U applyIfPresent(T t, Function<T, U> f) {
+        return t == null ? null : f.apply(t);
+    }
+
+    public static <T, U> U applyOrNull(T t, Function<T, U> f) {
+        return t == null ? null : f.apply(t);
+    }
+
+    public static <T, U> U applyOr(T t, Function<T, U> f, U defaultVal) {
+        return t == null ? defaultVal : f.apply(t);
+    }
+
+    public static <T> void ifPresent(T t, Consumer<T> f) {
+        if (t != null)
+            f.accept(t);
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public static <T> T valueOr(T t, T defaultVal) {
+        return t != null ? t : defaultVal;
+    }
+
+    public static <T> T valueOrGet(T t, Supplier<T> defaultValFn) {
+        return t != null ? t : defaultValFn.get();
+    }
+
+    public static <T> T valueOrThrow(T t,  Supplier<? extends RuntimeException> errFn) {
+        if (t != null)
+            return t;
+        else
+            throw errFn.get();
+    }
+
+    /// Like Objects.requireNonNull, but accepts a nullable type, contrary to how the checker interprets
+    /// Objects.requireNonNull. This avoids the unhelpful warnings from the checker that the argument might be null. That
+    /// the caller accepts this is a possibility and wants that condition checked on penalty of NPE is the *purpose* of
+    /// the call in the first place at least as it is used here, and the additional warnings only add noise.
+    @org.checkerframework.dataflow.qual.Pure
+    public static <T> T requireNonNull(T t) throws NullPointerException {
+        if (t == null)
+            throw new NullPointerException();
+        return t;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public static <T> T asNullable(T t) {
+        return t;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public static <T> T nonNull(T t, String message) {
+        if (t == null)
+            throw new RuntimeException(message);
+        return t;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public static <T> T or(T t, T defaultVal) {
+        if (t != null)
+            return t;
+        else
+            return defaultVal;
+    }
+
+    @org.checkerframework.dataflow.qual.SideEffectFree
+    private Nullables() {
+    }
+}

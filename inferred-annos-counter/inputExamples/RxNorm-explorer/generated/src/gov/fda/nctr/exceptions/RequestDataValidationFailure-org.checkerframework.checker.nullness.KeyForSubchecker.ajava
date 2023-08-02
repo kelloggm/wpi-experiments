@@ -1,0 +1,18 @@
+package gov.fda.nctr.exceptions;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.KeyForSubchecker")
+public class RequestDataValidationFailure extends BadRequestException {
+
+    @org.checkerframework.dataflow.qual.SideEffectFree
+    public RequestDataValidationFailure(String message) {
+        super(message);
+    }
+
+    @org.checkerframework.dataflow.qual.SideEffectFree
+    public RequestDataValidationFailure(String message, Throwable cause) {
+        super(message, cause);
+    }
+}

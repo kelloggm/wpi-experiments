@@ -1,0 +1,21 @@
+package gov.fda.nctr.data_access.drugrelents;
+
+import java.util.List;
+import java.util.Set;
+import org.springframework.stereotype.Service;
+import gov.fda.nctr.models.dto.NdcRelatedEntities;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
+public class TheDrugRelatedEntitiesSearchService implements DrugRelatedEntitiesSearchService {
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull DrugRelatedEntitiesSearchDbOpsService dbOps;
+
+    public TheDrugRelatedEntitiesSearchService(DrugRelatedEntitiesSearchDbOpsService dbOps) {
+        this.dbOps = dbOps;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull List<NdcRelatedEntities> getNdcRelatedEntities(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull TheDrugRelatedEntitiesSearchService this, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Set<String> ndcs) {
+        return dbOps.getNdcRelatedEntities(ndcs);
+    }
+}

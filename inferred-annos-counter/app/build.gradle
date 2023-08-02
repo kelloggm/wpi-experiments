@@ -1,0 +1,62 @@
+plugins {
+    // Apply the application plugin to add support for building a CLI application in Java.
+    id 'application'
+    id 'org.checkerframework' version '0.6.21'
+    id "com.diffplug.spotless" version "6.11.0"
+}
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+    // Use JUnit test framework.
+    testImplementation 'junit:junit:4.13.2'
+
+    // Handles parsing diff files.
+    // https://mvnrepository.com/artifact/io.github.java-diff-utils/java-diff-utils
+    implementation "io.github.java-diff-utils:java-diff-utils:4.11"
+    implementation 'com.github.javaparser:javaparser-core:3.25.0'
+    implementation 'org.checkerframework:checker-qual:3.32.0'
+    implementation 'org.checkerframework:checker:3.32.0'
+}
+
+checkerFramework {
+    checkers = [
+            'org.checkerframework.checker.resourceleak.ResourceLeakChecker',
+            'org.checkerframework.checker.index.IndexChecker'
+    ]
+    excludeTests = true
+}
+
+spotless {
+
+  // If you add any formatters to this block that require dependencies here, then you must also
+  // add them to spotlessPredeclare block.
+  format 'misc', {
+    // define the files to apply `misc` to
+    target '*.gradle', '*.md', '.gitignore'
+
+    // define the steps to apply to those files
+    trimTrailingWhitespace()
+    indentWithSpaces(2)
+    endWithNewline()
+  }
+  java {
+    googleJavaFormat()
+    formatAnnotations()
+  }
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'org.checkerframework.wholeprograminference.inferredannoscounter.InferredAnnosCounter'
+}
+
+test {
+  testLogging {
+    events "failed"
+    exceptionFormat "full"
+  }
+}

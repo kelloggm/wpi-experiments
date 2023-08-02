@@ -1,0 +1,52 @@
+package gov.fda.nctr.models.dto;
+
+import org.checkerframework.checker.nullness.qual.Nullable;
+import com.fasterxml.jackson.annotation.JsonAlias;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.KeyForSubchecker")
+public class AppVersion {
+
+    private String buildTimestamp;
+
+    private String buildUserEmail;
+
+    private String buildUserName;
+
+    private String commitId;
+
+    private String commitTimestamp;
+
+    @org.checkerframework.dataflow.qual.SideEffectFree
+    public AppVersion() {
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  String getBuildTimestamp() {
+        return buildTimestamp;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  String getBuildUserEmail() {
+        return buildUserEmail;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  String getBuildUserName() {
+        return buildUserName;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  String getCommitId() {
+        return commitId;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  String getCommitTimestamp() {
+        return commitTimestamp;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  String toString( AppVersion this) {
+        return "{buildTimestamp=" + buildTimestamp + ", buildUserEmail='" + buildUserEmail + '\'' + ", buildUserName='" + buildUserName + '\'' + ", commitId='" + commitId + '\'' + ", commitTimestamp=" + commitTimestamp + '}';
+    }
+}

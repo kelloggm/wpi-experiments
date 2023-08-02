@@ -1,0 +1,13 @@
+package gov.fda.nctr.data_access.drugrelents;
+
+import java.util.List;
+import java.util.Set;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import gov.fda.nctr.models.dto.NdcRelatedEntities;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.KeyForSubchecker")
+public interface DrugRelatedEntitiesSearchDbOpsService {
+
+    @org.checkerframework.dataflow.qual.Pure
+     List<NdcRelatedEntities> getNdcRelatedEntities( DrugRelatedEntitiesSearchDbOpsService this,  Set<String> ndcs);
+}

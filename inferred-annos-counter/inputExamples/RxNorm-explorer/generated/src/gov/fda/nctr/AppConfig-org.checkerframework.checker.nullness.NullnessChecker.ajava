@@ -1,0 +1,25 @@
+package gov.fda.nctr;
+
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
+public class AppConfig {
+
+    @org.checkerframework.dataflow.qual.SideEffectFree
+    public AppConfig() {
+    }
+
+    protected final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Logger log = LoggerFactory.getLogger(AppConfig.class);
+
+    private @org.checkerframework.checker.initialization.qual.FBCBottom @org.checkerframework.checker.nullness.qual.MonotonicNonNull String exampleProp;
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.exampleProp" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.FBCBottom @org.checkerframework.checker.nullness.qual.Nullable String getExampleProp() {
+        return exampleProp;
+    }
+}

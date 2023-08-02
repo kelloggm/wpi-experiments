@@ -1,0 +1,9 @@
+public class AnnotationWithArgument {
+	public static void main() {
+		@org.checkerframework.checker.nullness.qual.EnsuresNonNull({"tz"}) int x;
+		@org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods(value={"this"}, methods={"close"}) int y;
+		@org.checkerframework.checker.nullness.qual.EnsuresNonNull({"tz", "f"}) int z;
+		@org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods(value={"this"}, methods={"toString"}) int a;
+		@org.checkerframework.framework.common.value.qual.StringVal({"},{"}) int b;
+	}
+}

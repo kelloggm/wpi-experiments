@@ -1,0 +1,8 @@
+public class AnnotationWithinWarningSuppression {
+	public static void main() {
+		int[] x;
+		long[] y;
+		String[] z;
+	}
+}
+

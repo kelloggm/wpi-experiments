@@ -1,0 +1,24 @@
+Annotation,Original count,Inferred,Original inferred count,Original inferred %
+org.checkerframework.framework.qual.RequiresQualifier,0,1,0,0
+org.checkerframework.framework.qual.AnnotatedFor,0,1,0,0
+org.checkerframework.dataflow.qual.SideEffectFree,0,2,0,0
+org.checkerframework.common.value.qual.ArrayLenRange,0,1,0,0
+org.checkerframework.common.value.qual.ArrayLen,0,1,0,0
+org.checkerframework.common.initializedfields.qual.InitializedFields,0,40,0,0
+org.checkerframework.checker.signedness.qual.Signed,0,40,0,0
+org.checkerframework.checker.mustcall.qual.MustCall,0,40,0,0
+org.checkerframework.checker.lock.qual.NewObject,0,11,0,0
+org.checkerframework.checker.lock.qual.GuardedBy,0,29,0,0
+org.checkerframework.checker.initialization.qual.Initialized,0,40,0,0
+org.checkerframework.checker.index.qual.SameLen,0,2,0,0
+org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods,0,11,0,0
+org.checkerframework.checker.calledmethods.qual.CalledMethods,0,40,0,0
+org.plumelib.options.Option,7,0,0,0
+org.checkerframework.dataflow.qual.Pure,1,1,0,0
+org.checkerframework.checker.regex.qual.Regex,1,1,0,0
+org.checkerframework.checker.nullness.qual.RequiresNonNull,2,0,0,0
+org.checkerframework.checker.nullness.qual.Nullable,2,0,0,0
+org.checkerframework.checker.nullness.qual.NonNull,2,38,0,0
+org.checkerframework.checker.nullness.qual.MonotonicNonNull,1,2,0,0
+org.checkerframework.checker.nullness.qual.EnsuresNonNull,1,0,0,0
+java.lang.SuppressWarnings,8,0,0,0

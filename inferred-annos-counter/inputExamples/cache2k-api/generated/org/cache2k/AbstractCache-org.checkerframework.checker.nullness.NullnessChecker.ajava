@@ -1,0 +1,416 @@
+package org.cache2k;
+
+/*-
+ * #%L
+ * cache2k API
+ * %%
+ * Copyright (C) 2000 - 2022 headissue GmbH, Munich
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ */
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentMap;
+import java.util.function.Function;
+import org.cache2k.processor.EntryMutator;
+import org.cache2k.processor.EntryProcessingResult;
+import org.cache2k.processor.EntryProcessor;
+
+/**
+ * Base class for implementations of the cache interface. By default, every method throws {@link
+ * UnsupportedOperationException}.
+ *
+ * @author Jens Wilke
+ */
+@org.checkerframework.framework.qual.AnnotatedFor(
+    "org.checkerframework.checker.nullness.NullnessChecker")
+public class AbstractCache<K, V> implements Cache<K, V> {
+
+  @org.checkerframework.dataflow.qual.Pure
+  public String getName(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V get(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public CacheEntry<K, V> getEntry(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V peek(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public CacheEntry<K, V> peekEntry(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean containsKey(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void put(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key,
+      V value) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V computeIfAbsent(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key,
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          Function<? super K, ? extends V> function) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean putIfAbsent(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key,
+      V value) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V peekAndReplace(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key,
+      V value) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean replace(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key,
+      V value) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean replaceIfEquals(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key,
+      V oldValue,
+      V newValue) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V peekAndRemove(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean containsAndRemove(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void remove(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean removeIfEquals(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key,
+      V expectedValue) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void removeAll(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          Iterable<? extends K> keys) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V peekAndPut(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key,
+      V value) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void expireAt(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key,
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          long time) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public CompletableFuture<Void> loadAll(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          Iterable<? extends K> keys) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public CompletableFuture<Void> reloadAll(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          Iterable<? extends K> keys) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public <R> R invoke(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key,
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          EntryProcessor<K, V, R> processor) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public <R> Map<K, EntryProcessingResult<R>> invokeAll(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          Iterable<? extends K> keys,
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          EntryProcessor<K, V, R> entryProcessor) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void mutate(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      K key,
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          EntryMutator<K, V> mutator) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void mutateAll(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          Iterable<? extends K> keys,
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          EntryMutator<K, V> mutator) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public Map<K, V> getAll(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          Iterable<? extends K> keys) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public Map<K, V> peekAll(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          Iterable<? extends K> keys) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void putAll(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          Map<? extends K, ? extends V> valueMap) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public Set<K> keys(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public Set<CacheEntry<K, V>> entries(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void removeAll(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void clear(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void close(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public CacheManager getCacheManager(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean isClosed(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public ConcurrentMap<K, V> asMap(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public <X> X requestInterface(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this,
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          Class<X> type) {
+    throw new UnsupportedOperationException();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public String toString(
+      @org.checkerframework.checker.initialization.qual.Initialized
+          @org.checkerframework.checker.nullness.qual.NonNull
+          AbstractCache<K, V> this) {
+    throw new UnsupportedOperationException();
+  }
+}

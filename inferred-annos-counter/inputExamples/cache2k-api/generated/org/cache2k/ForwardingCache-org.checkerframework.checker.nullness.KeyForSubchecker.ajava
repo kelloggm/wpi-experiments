@@ -1,0 +1,239 @@
+package org.cache2k;
+
+/*-
+ * #%L
+ * cache2k API
+ * %%
+ * Copyright (C) 2000 - 2022 headissue GmbH, Munich
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ */
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentMap;
+import java.util.function.Function;
+import org.cache2k.processor.EntryMutator;
+import org.cache2k.processor.EntryProcessingResult;
+import org.cache2k.processor.EntryProcessor;
+
+/**
+ * Wrapper class that forwards all method calls to a delegate. Can be used to implement extensions
+ * that need to intercept calls to the cache.
+ *
+ * @author Jens Wilke
+ */
+@org.checkerframework.framework.qual.AnnotatedFor(
+    "org.checkerframework.checker.nullness.KeyForSubchecker")
+public abstract class ForwardingCache<K, V> implements Cache<K, V> {
+
+  /** Subclasses need to implement this method which specifies the delegation target. */
+  @org.checkerframework.dataflow.qual.Pure
+  protected abstract Cache<K, V> delegate(ForwardingCache<K, V> this);
+
+  @org.checkerframework.dataflow.qual.Pure
+  public String getName(ForwardingCache<K, V> this) {
+    return delegate().getName();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V get(ForwardingCache<K, V> this, K key) {
+    return delegate().get(key);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public CacheEntry<K, V> getEntry(ForwardingCache<K, V> this, K key) {
+    return delegate().getEntry(key);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V peek(ForwardingCache<K, V> this, K key) {
+    return delegate().peek(key);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public CacheEntry<K, V> peekEntry(ForwardingCache<K, V> this, K key) {
+    return delegate().peekEntry(key);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean containsKey(ForwardingCache<K, V> this, K key) {
+    return delegate().containsKey(key);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void put(ForwardingCache<K, V> this, K key, V value) {
+    delegate().put(key, value);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V computeIfAbsent(
+      ForwardingCache<K, V> this, K key, Function<? super K, ? extends V> function) {
+    return delegate().computeIfAbsent(key, function);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean putIfAbsent(ForwardingCache<K, V> this, K key, V value) {
+    return delegate().putIfAbsent(key, value);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V peekAndReplace(ForwardingCache<K, V> this, K key, V value) {
+    return delegate().peekAndReplace(key, value);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean replace(ForwardingCache<K, V> this, K key, V value) {
+    return delegate().replace(key, value);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean replaceIfEquals(ForwardingCache<K, V> this, K key, V oldValue, V newValue) {
+    return delegate().replaceIfEquals(key, oldValue, newValue);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V peekAndRemove(ForwardingCache<K, V> this, K key) {
+    return delegate().peekAndRemove(key);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean containsAndRemove(ForwardingCache<K, V> this, K key) {
+    return delegate().containsAndRemove(key);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void remove(ForwardingCache<K, V> this, K key) {
+    delegate().remove(key);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean removeIfEquals(ForwardingCache<K, V> this, K key, V expectedValue) {
+    return delegate().removeIfEquals(key, expectedValue);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void removeAll(ForwardingCache<K, V> this, Iterable<? extends K> keys) {
+    delegate().removeAll(keys);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public V peekAndPut(ForwardingCache<K, V> this, K key, V value) {
+    return delegate().peekAndPut(key, value);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void expireAt(ForwardingCache<K, V> this, K key, long time) {
+    delegate().expireAt(key, time);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public CompletableFuture<Void> loadAll(ForwardingCache<K, V> this, Iterable<? extends K> keys) {
+    return delegate().loadAll(keys);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public CompletableFuture<Void> reloadAll(ForwardingCache<K, V> this, Iterable<? extends K> keys) {
+    return delegate().reloadAll(keys);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public <R> R invoke(ForwardingCache<K, V> this, K key, EntryProcessor<K, V, R> processor) {
+    return delegate().invoke(key, processor);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void mutate(ForwardingCache<K, V> this, K key, EntryMutator<K, V> mutator) {
+    delegate().mutate(key, mutator);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public <R> Map<K, EntryProcessingResult<R>> invokeAll(
+      ForwardingCache<K, V> this,
+      Iterable<? extends K> keys,
+      EntryProcessor<K, V, R> entryProcessor) {
+    return delegate().invokeAll(keys, entryProcessor);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void mutateAll(
+      ForwardingCache<K, V> this, Iterable<? extends K> keys, EntryMutator<K, V> mutator) {
+    delegate().mutateAll(keys, mutator);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public Map<K, V> getAll(ForwardingCache<K, V> this, Iterable<? extends K> keys) {
+    return delegate().getAll(keys);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public Map<K, V> peekAll(ForwardingCache<K, V> this, Iterable<? extends K> keys) {
+    return delegate().peekAll(keys);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void putAll(ForwardingCache<K, V> this, Map<? extends K, ? extends V> valueMap) {
+    delegate().putAll(valueMap);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public Set<K> keys(ForwardingCache<K, V> this) {
+    return delegate().keys();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public Set<CacheEntry<K, V>> entries(ForwardingCache<K, V> this) {
+    return delegate().entries();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void removeAll(ForwardingCache<K, V> this) {
+    delegate().removeAll();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void clear(ForwardingCache<K, V> this) {
+    delegate().clear();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public void close(ForwardingCache<K, V> this) {
+    delegate().close();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public CacheManager getCacheManager(ForwardingCache<K, V> this) {
+    return delegate().getCacheManager();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public boolean isClosed(ForwardingCache<K, V> this) {
+    return delegate().isClosed();
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public <X> X requestInterface(ForwardingCache<K, V> this, Class<X> type) {
+    return delegate().requestInterface(type);
+  }
+
+  @org.checkerframework.dataflow.qual.Pure
+  public ConcurrentMap<K, V> asMap(ForwardingCache<K, V> this) {
+    return delegate().asMap();
+  }
+
+  /** Forwards to delegate but adds the simple class name to the output. */
+  public String toString(ForwardingCache<K, V> this) {
+    return this.getClass().getSimpleName() + "!" + delegate();
+  }
+}

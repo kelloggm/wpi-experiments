@@ -1,0 +1,128 @@
+package org.cache2k.expiry;
+
+/*-
+ * #%L
+ * cache2k API
+ * %%
+ * Copyright (C) 2000 - 2022 headissue GmbH, Munich
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ */
+import org.cache2k.DataAware;
+
+/**
+ * @author Jens Wilke
+ */
+@org.checkerframework.framework.qual.AnnotatedFor(
+    "org.checkerframework.checker.nullness.KeyForSubchecker")
+public interface RefreshAheadPolicy<K, V, T> extends DataAware<K, V> {
+
+  RefreshAheadPolicy<?, ?, ?> LEGACY_DEFAULT =
+      new RefreshAheadPolicy<Object, Object, Object>() {
+
+        @org.checkerframework.dataflow.qual.Pure
+        public long refreshAheadTime(Context<Object> ctx) {
+          return ctx.getExpiryTime();
+        }
+
+        @org.checkerframework.dataflow.qual.Pure
+        public int requiredHits(Context<Object> ctx) {
+          return ctx.isRefreshAhead() ? 1 : 0;
+        }
+      };
+
+  RefreshAheadPolicy<?, ?, ?> DEFAULT =
+      new RefreshAheadPolicy<Object, Object, Object>() {
+
+        @org.checkerframework.dataflow.qual.Pure
+        public long refreshAheadTime(Context<Object> ctx) {
+          return ctx.getExpiryTime();
+        }
+
+        @org.checkerframework.dataflow.qual.Pure
+        public int requiredHits(Context<Object> ctx) {
+          return 1;
+        }
+      };
+
+  /**
+   * Called after a load or refresh and after the expiry or resilience policy was run to determine
+   * the refresh ahead time. For a refresh to happen, the result needs to be lower or equal to
+   * expiry time.
+   *
+   * <p>c
+   */
+  @org.checkerframework.dataflow.qual.Pure
+  long refreshAheadTime(Context<T> ctx);
+
+  /**
+   * Number of required j
+   *
+   * @param ctx
+   * @return
+   */
+  @org.checkerframework.dataflow.qual.Pure
+  int requiredHits(Context<T> ctx);
+
+  interface Context<T> {
+
+    @org.checkerframework.dataflow.qual.Pure
+    boolean isLoadException();
+
+    @org.checkerframework.dataflow.qual.Pure
+    boolean isExceptionSuppressed();
+
+    /** Start time of operation. */
+    @org.checkerframework.dataflow.qual.Pure
+    long getStartTime();
+
+    /** Stop time of operation. */
+    @org.checkerframework.dataflow.qual.Pure
+    long getStopTime();
+
+    /** The current time, identical to {@link #getStopTime()} */
+    @org.checkerframework.dataflow.qual.Pure
+    long getCurrentTime();
+
+    /**
+     * The expiry time as calculated by the expiry policy or resilience policy. Always a positive
+     * value.
+     */
+    @org.checkerframework.dataflow.qual.Pure
+    long getExpiryTime(Context<T> this);
+
+    /**
+     * {@code True}, if the value was accessed since the last refresh or initial load. The operation
+     * that triggered the initial load does not count as access.
+     */
+    @org.checkerframework.dataflow.qual.Pure
+    boolean isAccessed();
+
+    /** {@code true}, if load request, includes refresh */
+    @org.checkerframework.dataflow.qual.Pure
+    boolean isLoad();
+
+    /** {@code True}, if the load was not triggered by a user request */
+    @org.checkerframework.dataflow.qual.Pure
+    boolean isRefreshAhead(Context<T> this);
+
+    /** Returns data set by {@link #setUserData(Object)} in an earlier call to the policy */
+    @org.checkerframework.dataflow.qual.Pure
+    T getUserData();
+
+    /** Sets arbitrary data used by the policy. */
+    @org.checkerframework.dataflow.qual.Pure
+    void setUserData(T data);
+  }
+}

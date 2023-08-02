@@ -1,0 +1,11 @@
+package gov.fda.nctr.data_access.version_info;
+
+import org.checkerframework.checker.nullness.qual.Nullable;
+import gov.fda.nctr.models.dto.AppVersion;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
+public interface AppVersionService {
+
+    @org.checkerframework.dataflow.qual.Pure
+    @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable AppVersion getAppVersion();
+}

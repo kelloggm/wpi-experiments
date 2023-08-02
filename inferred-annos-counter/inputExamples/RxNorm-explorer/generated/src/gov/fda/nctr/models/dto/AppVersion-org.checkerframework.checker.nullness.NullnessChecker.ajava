@@ -1,0 +1,82 @@
+package gov.fda.nctr.models.dto;
+
+import org.checkerframework.checker.nullness.qual.Nullable;
+import com.fasterxml.jackson.annotation.JsonAlias;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
+public class AppVersion {
+
+    private @org.checkerframework.checker.initialization.qual.FBCBottom @org.checkerframework.checker.nullness.qual.MonotonicNonNull String buildTimestamp;
+
+    private @org.checkerframework.checker.initialization.qual.FBCBottom @org.checkerframework.checker.nullness.qual.MonotonicNonNull String buildUserEmail;
+
+    private @org.checkerframework.checker.initialization.qual.FBCBottom @org.checkerframework.checker.nullness.qual.MonotonicNonNull String buildUserName;
+
+    private @org.checkerframework.checker.initialization.qual.FBCBottom @org.checkerframework.checker.nullness.qual.MonotonicNonNull String commitId;
+
+    private @org.checkerframework.checker.initialization.qual.FBCBottom @org.checkerframework.checker.nullness.qual.MonotonicNonNull String commitTimestamp;
+
+    @org.checkerframework.dataflow.qual.SideEffectFree
+    public AppVersion() {
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildTimestamp" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildUserEmail" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildUserName" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.commitId" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.commitTimestamp" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.FBCBottom @org.checkerframework.checker.nullness.qual.Nullable String getBuildTimestamp() {
+        return buildTimestamp;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildTimestamp" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildUserEmail" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildUserName" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.commitId" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.commitTimestamp" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.FBCBottom @org.checkerframework.checker.nullness.qual.Nullable String getBuildUserEmail() {
+        return buildUserEmail;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildTimestamp" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildUserEmail" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildUserName" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.commitId" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.commitTimestamp" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.FBCBottom @org.checkerframework.checker.nullness.qual.Nullable String getBuildUserName() {
+        return buildUserName;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildTimestamp" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildUserEmail" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildUserName" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.commitId" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.commitTimestamp" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.FBCBottom @org.checkerframework.checker.nullness.qual.Nullable String getCommitId() {
+        return commitId;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildTimestamp" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildUserEmail" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildUserName" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.commitId" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.commitTimestamp" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.FBCBottom @org.checkerframework.checker.nullness.qual.Nullable String getCommitTimestamp() {
+        return commitTimestamp;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildTimestamp" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildUserEmail" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.buildUserName" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.commitId" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.commitTimestamp" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String toString(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull AppVersion this) {
+        return "{buildTimestamp=" + buildTimestamp + ", buildUserEmail='" + buildUserEmail + '\'' + ", buildUserName='" + buildUserName + '\'' + ", commitId='" + commitId + '\'' + ", commitTimestamp=" + commitTimestamp + '}';
+    }
+}

@@ -1,0 +1,18 @@
+package gov.fda.nctr.exceptions;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
+public class BadRequestException extends RuntimeException {
+
+    @org.checkerframework.dataflow.qual.SideEffectFree
+    public BadRequestException(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String message) {
+        super(message);
+    }
+
+    @org.checkerframework.dataflow.qual.SideEffectFree
+    public BadRequestException(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String message, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Throwable cause) {
+        super(message, cause);
+    }
+}

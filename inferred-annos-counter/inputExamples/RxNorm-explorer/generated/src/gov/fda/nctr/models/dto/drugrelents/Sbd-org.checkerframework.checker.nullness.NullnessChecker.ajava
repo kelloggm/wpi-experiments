@@ -1,0 +1,95 @@
+package gov.fda.nctr.models.dto.drugrelents;
+
+import org.checkerframework.checker.nullness.qual.Nullable;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
+public class Sbd {
+
+    private String rxcui;
+
+    private String name;
+
+    private String prescribableName;
+
+    private String rxtermForm;
+
+    private String dosageForm;
+
+    private String availableStrengths;
+
+    private String qualDistinct;
+
+    private String quantity;
+
+    private boolean humanDrug;
+
+    private boolean vetDrug;
+
+    private String unquantifiedFormRxcui;
+
+    private String suppress;
+
+    @org.checkerframework.dataflow.qual.SideEffectFree
+    private Sbd() {
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public String getRxcui() {
+        return rxcui;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public String getName() {
+        return name;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public String getPrescribableName() {
+        return prescribableName;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public String getRxtermForm() {
+        return rxtermForm;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public String getDosageForm() {
+        return dosageForm;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public String getAvailableStrengths() {
+        return availableStrengths;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public String getQualDistinct() {
+        return qualDistinct;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public String getQuantity() {
+        return quantity;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public boolean isHumanDrug() {
+        return humanDrug;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public boolean isVetDrug() {
+        return vetDrug;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public String getUnquantifiedFormRxcui() {
+        return unquantifiedFormRxcui;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public String getSuppress() {
+        return suppress;
+    }
+}

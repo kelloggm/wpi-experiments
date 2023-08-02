@@ -1,0 +1,95 @@
+package gov.fda.nctr.util;
+
+import java.util.List;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import static com.fasterxml.jackson.annotation.PropertyAccessor.FIELD;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
+public final class Json {
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull ObjectMapper makeJsonObjectMapper() {
+        return Jackson2ObjectMapperBuilder.json().failOnUnknownProperties(true).visibility(FIELD, JsonAutoDetect.Visibility.ANY).build();
+    }
+
+    public static <T> T readJsonn(ObjectMapper objMapper, String s, Class<T> c) {
+        if (s == null)
+            return null;
+        return readJson(objMapper, s, c);
+    }
+
+    public static <T> T readJson(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull ObjectMapper objMapper, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String s, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Class<T> c) {
+        try {
+            return objMapper.readValue(s.getBytes(), c);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull JsonNode readJsonNode(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull ObjectMapper objMapper, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String s) {
+        try {
+            return objMapper.readTree(s);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull ObjectNode readJsonObjectNode(ObjectMapper objMapper, String s) {
+        return (ObjectNode) readJsonNode(objMapper, s);
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String toJson(Object o, ObjectMapper objMapper) {
+        try {
+            return objMapper.writeValueAsString(o);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static JsonNode getJsonPart(ObjectNode sourceNode, List<String> partPath) {
+        JsonNode curr = sourceNode;
+        for (String propertyName : partPath) {
+            curr = curr.get(propertyName);
+            if (curr == null)
+                return null;
+        }
+        return curr;
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable ObjectNode getJsonObjectPart(ObjectNode sourceNode, List<String> partPath) {
+        JsonNode partNode = getJsonPart(sourceNode, partPath);
+        return (partNode != null) ? (ObjectNode) partNode : null;
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable Long getJsonLongPart(ObjectNode sourceNode, List<String> partPath) {
+        JsonNode partNode = getJsonPart(sourceNode, partPath);
+        return (partNode != null) ? partNode.longValue() : null;
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable String getJsonStringPart(ObjectNode sourceNode, List<String> partPath) {
+        JsonNode partNode = getJsonPart(sourceNode, partPath);
+        return (partNode != null) ? partNode.textValue() : null;
+    }
+
+    public static ObjectNode withReplacedObjectNode(ObjectNode sourceNode, List<String> replacementPath, ObjectNode replacementNode) {
+        if (replacementPath.isEmpty())
+            return replacementNode;
+        ObjectNode res = sourceNode.deepCopy();
+        ObjectNode curr = res;
+        for (String propertyName : replacementPath.subList(0, replacementPath.size() - 1)) {
+            ObjectNode next = (ObjectNode) curr.get(propertyName);
+            curr = (next == null) ? curr.putObject(propertyName) : next;
+        }
+        String lastKey = replacementPath.get(replacementPath.size() - 1);
+        curr.replace(lastKey, replacementNode);
+        return res;
+    }
+
+    @org.checkerframework.dataflow.qual.SideEffectFree
+    private Json() {
+    }
+}

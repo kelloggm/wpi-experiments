@@ -1,0 +1,3 @@
+public class AnnotationMismatch {
+	@NonNull public HashMap <@Nullable String, String> sample;
+}

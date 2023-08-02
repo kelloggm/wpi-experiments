@@ -1,0 +1,7 @@
+ public class GJFMultiLine {              
+         public static @org.checkerframework.checker.calledmethods.qual
+                            .CalledMethods({"someVeryLongMethodName"}) Object getFoo()  {
+    		return foo;
+	}
+   public static @NonNull DateTime start_date = new DateTime();
+}

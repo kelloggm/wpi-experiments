@@ -1,0 +1,5 @@
+public class MultiLineAnnotation {
+	public static void main() {
+		@org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods(value = {"this"}, methods = {"close"}) int x;
+	}
+}

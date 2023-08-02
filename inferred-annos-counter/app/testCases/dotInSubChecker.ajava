@@ -1,0 +1,6 @@
+  public class dotInSubChecker {  
+	public static void main() {
+  		@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.resourceleak.ResourceLeakChecker") int x;
+  		@org.checkerframework.dataflow.qual.Pure int y;
+        }
+}
