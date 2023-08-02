@@ -28,7 +28,7 @@ Instructions for how (and when) to use it are in `experimental-procedure.md`.
 See `maven.md`.
 * `projects.in`: this file lists the repositories and commit ids of the projects that we used in our
 experiments.
-* `wpi-template.sh`: a template ``outer-loop'' script for running WPI on a project. Instructions for
+* `wpi-template.sh`: a template "outer-loop" script for running WPI on a project. Instructions for
 using it can be found at the top of the file or in `experimental-procedure.md`.
 * `wpi-subprojects.sh`: a variant of `wpi-template.sh` for use on projects that have subprojects,
 which is common for large Gradle or Maven projects.
