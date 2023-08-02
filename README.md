@@ -22,6 +22,8 @@ procedure on Maven projects.
 * `auto-wpi-projects.sh`: a script that runs WPI on all of the experimental subjects (this corresponds
 to table 2 in the paper). Note that your machine must have sufficient RAM available to run WPI on
 the largest subject, Randoop (TODO: how much is required?) or this script will fail.
+* `all-projects-data.xlsx`: this spreadsheet contains the data used to produce Table 2 in the paper. It has a "summary" tab that summarizes all of the projects (including those that didn't make it into the final paper for various reasons), as well as a tab for each project. Each project tab contains the output of the inferred annos counter, a list of all of the annotations that WPI did infer, and also links to the output of the typecheckers before and after annotations were inferred. The number of warnings was computed by hand from those outputs, disregarding warnings that did not come from the typechecker.
+* `non-inferred-annotations.xlsx`: this spreadsheet contains our (manual) analysis of the reasons that annotations for each project in table 2 were missed by WPI. Its data was used to produce table 3, as well as the analysis in section 6.E.1. It also has a summary sheet that lists all of the causes we identified, and per-project tabs that list the specific missed annotations and line numbers, as well as our judgement of the causes..
 * `compute-annos-inferred.sh`: a template script for computing the number of inferred annotations.
 Instructions for how (and when) to use it are in `experimental-procedure.md`.
 * `extractJavacArgs.sh`: a helper script for dealing with a problem that arises for some Maven projects.
