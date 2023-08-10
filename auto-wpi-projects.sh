@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # This script clones, checks out the "wpi-enabled" branch and runs the wpi script over
 # every project used as benchmarks in the "Pluggable Type Inference for Free" paper
 # submitted to ASE2023.
