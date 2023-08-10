@@ -24,7 +24,7 @@ SUBPROJECTS=(
 )
 
 # No changes needed below this point
-PROJECT_SPACE=$(realpath)
+PROJECT_SPACE=$(realpath .)
 PROJECT_NAME=$(basename "${PROJECT_SPACE}")
 PROJECT_TEMP_ROOT="${TOP_LEVEL}"/"${PROJECT_NAME}"
 
