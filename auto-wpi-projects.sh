@@ -68,7 +68,6 @@ installCF $CF_VERSION $CF_COMMIT
 if [ ! -d "$HOME/.m2/repository/org/checkerframework/checker/$CF_VERSION/" ]; then echo "Checkerframework Snapshot not found"; exit; fi;
 if [ -z "$CHECKERFRAMEWORK" ]; then echo "Checker framework enviornment variable is empty"; exit; fi;
 
-exit
 if [ ! -d $PROJECT_DIR ]; then mkdir $PROJECT_DIR; fi
 cd "$PROJECT_DIR"
 if [ ! -d $TYPECHECK_DIR ]; then mkdir $TYPECHECK_DIR; fi
