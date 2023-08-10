@@ -20,7 +20,8 @@ repositories=(
 )
 
 function installCF(){
-	if [ ! -d "$HOME/checkerframework/checker-framework" ];
+        # check whether the correct snapshot version is already in the local maven repo
+	if [ ! -d "$HOME/.m2/repository/org/checkerframework/checker/${CFVERSION}" ];
 	then
 		mkdir -p "$HOME/checkerframework"
         	pushd $HOME/checkerframework
