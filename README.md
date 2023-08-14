@@ -9,7 +9,7 @@ remain up-to-date as the Checker Framework changes and the tool improves) rather
 instructions here (which are static and specific to the version of the tool that was used
 to run the experiments in the paper).
 
-To repeat the experiments, use the Docker container available [here](todo:add the link). Download
+To repeat the experiments, use the Docker container available [here](https://zenodo.org/record/8247517). Download
 the container (`ase23.tar.gz`), and then run the following commands:
 ```
 gunzip ase23.tar.gz
