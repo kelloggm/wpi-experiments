@@ -9,7 +9,21 @@ remain up-to-date as the Checker Framework changes and the tool improves) rather
 instructions here (which are static and specific to the version of the tool that was used
 to run the experiments in the paper).
 
+To repeat the experiments, use the Docker container available [here](todo:add the link). Download
+the container (`ase23.tar.gz`), and then run the following commands:
+```
+gunzip ase23.tar.gz
+cat ase23.tar | docker import - ase23
+docker start ase23
+docker exec -it ase23 /bin/bash
+```
+
+The contents of this repository should already be present in the `/wpi-experiments` directory of the resulting docker container. Run the `auto-wpi-projects.sh` script from there to repeat the experiments.
+
 The repository contains the following:
+* `auto-wpi-projects.sh`: a script that runs WPI on all of the experimental subjects (this corresponds
+to table 2 in the paper). Note that your machine must have sufficient RAM available to run WPI on
+the largest subject, Randoop (at least 64 GB) or this script will fail.
 * `experimental-procedure.md`: a markdown file that describes how each project was modified to
 use WPI. Each of the paper's authors followed the procedure at least once, so (we hope!) it should also be
 relatively straightforward for someone else to use.
@@ -19,9 +33,6 @@ least once before attempting to use it. The file `experimental-procedure-short.m
 detailed instructions on how to use this script.
 * `maven.md`: this file details some common problems that we encountered when using the experimental
 procedure on Maven projects.
-* `auto-wpi-projects.sh`: a script that runs WPI on all of the experimental subjects (this corresponds
-to table 2 in the paper). Note that your machine must have sufficient RAM available to run WPI on
-the largest subject, Randoop (TODO: how much is required?) or this script will fail.
 * `all-projects-data.xlsx`: this spreadsheet contains the data used to produce Table 2 in the paper. It has a "summary" tab that summarizes all of the projects (including those that didn't make it into the final paper for various reasons), as well as a tab for each project. Each project tab contains the output of the inferred annos counter, a list of all of the annotations that WPI did infer, and also links to the output of the typecheckers before and after annotations were inferred. The number of warnings was computed by hand from those outputs, disregarding warnings that did not come from the typechecker.
 * `non-inferred-annotations.xlsx`: this spreadsheet contains our (manual) analysis of the reasons that annotations for each project in table 2 were missed by WPI. Its data was used to produce table 3, as well as the analysis in section 6.E.1. It also has a summary sheet that lists all of the causes we identified, and per-project tabs that list the specific missed annotations and line numbers, as well as our judgement of the causes..
 * `compute-annos-inferred.sh`: a template script for computing the number of inferred annotations.
