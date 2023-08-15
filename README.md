@@ -14,8 +14,7 @@ the container (`ase23.tar.gz`), and then run the following commands:
 ```
 gunzip ase23.tar.gz
 cat ase23.tar | docker import - ase23
-docker start ase23
-docker exec -it ase23 /bin/bash
+docker run -it ase23 /bin/bash
 ```
 
 The contents of this repository should already be present in the `/wpi-experiments` directory of the resulting docker container. Run the `auto-wpi-projects.sh` script from there to repeat the experiments.
