@@ -1,15 +1,30 @@
+# "Pluggable Type Inference for Free" (ASE 2023) experiments
+
 This repository contains the scripts and experimental data for the
 paper "Pluggable Type Inference for Free", which appeared at ASE 2023.
-The tool the paper describes is integrated into the [Checker Framework](checkerframework.org)
-as ["Whole Program Inference"](https://checkerframework.org/manual/#whole-program-inference);
-the scripts and data in this repository only concern the experiments described in the paper.
-If you are interested in using the described inference tool rather than reproducing or extending
-the paper's experiments, you should use the instructions there (which are maintained and should
-remain up-to-date as the Checker Framework changes and the tool improves) rather than the
-instructions here (which are static and specific to the version of the tool that was used
-to run the experiments in the paper).
 
-To repeat the experiments, use the Docker container available [here](https://zenodo.org/record/8247517). Download
+If you want to reproduce the experiments described in the paper, use this.
+
+If you want to use the pluggable type inference on your own code, use the version that is
+distributed with [Checker Framework](https://checkerframework.org) as ["Whole Program
+Inference"](https://checkerframework.org/manual/#whole-program-inference).  That version is
+maintained, whereas the instructions here are static and specific to the version of the tool that
+was used to run the experiments in the paper).
+
+
+## Running locally
+
+In a clone of the Checker Framework:
+  git checkout a274d91dc2016e83fc1741bc433d0d979a0532bb
+  ./gradlew publishToMavenLocal
+
+In the `wpi-experiments/` directory (which also contains this `README.md` file),
+run `auto-wpi-projects.sh`.
+
+
+## Running using a Docker container
+
+To repeat the experiments using a Docker container, use the Docker container available [here](https://zenodo.org/record/8247517). Download
 the container (`ase23.tar.gz`), and then run the following commands:
 ```
 gunzip ase23.tar.gz
@@ -18,6 +33,9 @@ docker run -it ase23 /bin/bash
 ```
 
 The contents of this repository should already be present in the `/wpi-experiments` directory of the resulting docker container. Run the `auto-wpi-projects.sh` script from there to repeat the experiments.
+
+
+## Contents of this repository
 
 The repository contains the following:
 * `auto-wpi-projects.sh`: a script that runs WPI on all of the experimental subjects (this corresponds
